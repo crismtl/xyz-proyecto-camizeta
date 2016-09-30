@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upload images</title>
+</head>
+
+<body ng-app="upload">
+    <div ng-controller="UploadCtrl">
+        <fieldset>
+            <legend>Upload files</legend>
+            <button type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                Select File</button>
+            File:
+            <div style="font:smaller">{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                <span class="progress" ng-show="f.progress >= 0">
+          <div style="width:{{f.progress}}%"  
+               ng-bind="f.progress + '%'"></div>
+      </span>
+            </div>
+            {{errorMsg}}
+        </fieldset>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="ng-file-upload.min.js"></script>
+</body>
+
+</html>
