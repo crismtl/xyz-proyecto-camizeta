@@ -6,19 +6,22 @@
  */
 
 module.exports = {
-    upload: function(req, res) {
-        var parametros = req.allParams();
-        console.log('parametros', parametros);
+  upload: function(req, res) {
+    var parametros = req.allParams();
+    console.log('parametros', parametros);
 
-        req.file('file')
-            .upload({
-                maxBytes: 1000000
-            }, function whenDone(err, uploadedFiles) {
-                if (err) return res.serverError(err);
-                else return res.json({
-                    files: uploadedFiles,
-                    textParams: req.params.all()
-                });
-            });
-    }
+    req.file('file')
+      .upload({
+        maxBytes: 1000000
+      }, function whenDone(err, uploadedFiles) {
+        if (err) return res.serverError(err);
+        else {
+          console.log('imagen ok');
+          return res.json({
+            files: uploadedFiles,
+            textParams: req.params.all()
+          })
+        };
+      });
+  }
 };
